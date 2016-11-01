@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using TransportesV3.Models;
 
 namespace TransportesV3
 {
@@ -27,11 +30,20 @@ namespace TransportesV3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<transportesv3Context>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // Add framework services.
             services.AddMvc();
 
             // Add Kendo UI services to the services container
             services.AddKendo();
+
+            //AutoMapper
+            services.AddAutoMapper();
+
+            // Add app services
+            //services.AddScoped<IInvoiceServices, InvoiceServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
