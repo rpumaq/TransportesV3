@@ -26,6 +26,10 @@ namespace TransportesV3.Models
         public virtual DbSet<UnidadModelo> UnidadModelo { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
 
+        public transportesv3Context(DbContextOptions options) : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.

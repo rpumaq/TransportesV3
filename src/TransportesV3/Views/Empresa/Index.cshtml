@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TransportesV3.Aplicacion.DTOs.Empresa>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    @(Html.Kendo().Grid(Model)
+                .Name("Grid")
+                .Columns(columns =>
+                {
+                    columns.Bound(p => p.Ruc).Groupable(false);
+                    columns.Bound(p => p.RazonSocial);
+                    columns.Bound(p => p.DireccionPrincipal);
+                    columns.Bound(p => p.Email);
+                })
+                .Pageable()
+                .Sortable()
+                .Scrollable()
+                .Filterable()
+                .Groupable()
+                .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .PageSize(15)
+                    .Read(read => read.Action("Empresa_Read", "Empresa"))
+                 ).Deferred()
+    )
+</div>
+
+@section scripts {
+    @Html.Kendo().DeferredScripts()
+}

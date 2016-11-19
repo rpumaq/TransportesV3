@@ -30,7 +30,7 @@ namespace TransportesV3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<transportesv3Context>(options =>
+            services.AddEntityFrameworkSqlServer().AddDbContext<transportesv3Context>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Add framework services.
