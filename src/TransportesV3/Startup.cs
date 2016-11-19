@@ -87,6 +87,7 @@ namespace TransportesV3
             });
 
             // Configure Kendo UI
+
             app.UseKendo(env);
         }
     }
