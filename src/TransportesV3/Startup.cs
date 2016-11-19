@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TransportesV3.Models;
+using TransportesV3.Aplicacion;
 
 namespace TransportesV3
 {
@@ -39,11 +39,26 @@ namespace TransportesV3
             // Add Kendo UI services to the services container
             services.AddKendo();
 
-            //AutoMapper
-            services.AddAutoMapper();
-
             // Add app services
-            //services.AddScoped<IInvoiceServices, InvoiceServices>();
+            services.AddScoped<IBoletoViajeService, BoletoViajeServiceImpl>();
+            services.AddScoped<IClienteService, ClienteServiceImpl>();
+            services.AddScoped<IComprobanteService, ComprobanteServiceImpl>();
+            services.AddScoped<IConductorService, ConductorServiceImpl>();
+            services.AddScoped<IDatosReniecService, DatosReniecServiceImpl>();
+            services.AddScoped<IDestinoService, DestinoServiceImpl>();
+            services.AddScoped<IEmpresaService, EmpresaServiceImpl>();
+            services.AddScoped<IHorarioService, HorarioServiceImpl>();
+            services.AddScoped<IHorarioHoraService, HorarioHoraServiceImpl>();
+            services.AddScoped<IModeloDetalleService, ModeloDetalleServiceImpl>();
+            services.AddScoped<IPersonalService, PersonalServiceImpl>();
+            services.AddScoped<IRutaService, RutaServiceImpl>();
+            services.AddScoped<IRutaDetalleService, RutaDetalleServiceImpl>();
+            services.AddScoped<ISucursalService, SucursalServiceImpl>();
+            services.AddScoped<ISucursalComprobanteService, SucursalComprobanteServiceImpl>();
+            services.AddScoped<ITipoDocumentoService, TipoDocumentoServiceImpl>();
+            services.AddScoped<IUnidadService, UnidadServiceImpl>();
+            services.AddScoped<IUnidadModeloService, UnidadModeloServiceImpl>();
+            services.AddScoped<IUsuarioService, UsuarioServiceImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
